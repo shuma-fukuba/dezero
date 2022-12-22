@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "dezero"
+version = "0.1.0"
+description = ""
+authors = ["fukuba-shuma <calculus.fukuba@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+numpy = "^1.24.0"
+matplotlib = "^3.6.2"
+pillow = "^9.3.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
