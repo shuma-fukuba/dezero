@@ -25,8 +25,19 @@ class Variable:
         functions = [self._creator]
         while functions:
             f = functions.pop()
-            x, y = f.inputs, f.output
-            x.grad = f.backward(y.grad)
+            gys = [output.grad for output in f.outputs]
+            gxs = f.backward(*gys)
+            if not isinstance(gxs, tuple):
+                gxs = (gxs, )
+
+            for x, gx in zip(f.inputs, gxs):
+                if x.grad is None:
+                    x.grad = gx
+                else:
+                    x.grad = x.grad + gx
 
             if x._creator is not None:
                 functions.append(x._creator)
+
+    def clean_grad(self):
+        self.grad = None
