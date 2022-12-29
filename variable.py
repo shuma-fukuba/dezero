@@ -2,11 +2,12 @@ import numpy as np
 
 
 class Variable:
-    def __init__(self, data) -> None:
+    def __init__(self, data, name=None) -> None:
         if data is not None:
             if not isinstance(data, np.ndarray):
                 raise TypeError(f"{type(data)} is not supported.")
         self.data = data
+        self.name = name
         self.grad = None
         self._creator = None
         self.generation = 0
@@ -14,6 +15,22 @@ class Variable:
     @property
     def creator(self):
         return self._creator
+
+    @property
+    def shape(self):
+        return self.data.shape
+
+    @property
+    def size(self):
+        return self.data.size
+
+    @property
+    def ndim(self):
+        return self.data.ndim
+
+    @property
+    def dtype(self):
+        return self.data.dtype
 
     @creator.setter
     def creator(self, func):
@@ -58,3 +75,12 @@ class Variable:
 
     def clean_grad(self):
         self.grad = None
+
+    def __len__(self):
+        return len(self.data)
+
+    def __repr__(self) -> str:
+        if self.data is None:
+            return 'variable(None)'
+        p = str(self.data).replace('\n', '\n' + ' ' * 9)
+        return f"variable({p})"
