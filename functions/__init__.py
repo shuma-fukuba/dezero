@@ -1,5 +1,5 @@
-from .exp import Exp
-from .square import Square
+from .Exp import Exp
+from .Square import Square
 
 def exp(x):
     f = Exp()
