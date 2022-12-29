@@ -1,6 +1,5 @@
-from .exp import Exp
-from .square import Square
-from .add import Add
+from .Exp import Exp
+from .Square import Square
 
 def exp(x):
     f = Exp()
@@ -10,8 +9,3 @@ def exp(x):
 def square(x):
     f = Square()
     return f(x)
-
-
-def add(x0, x1):
-    f = Add()
-    return f(x0, x1)
