@@ -7,8 +7,9 @@ class Variable:
             if not isinstance(data, np.ndarray):
                 raise TypeError(f"{type(data)} is not supported.")
         self.data = data
-        self.grad = None  # numpyの多次元配列を想定
+        self.grad = None
         self._creator = None
+        self.generation = 0
 
     @property
     def creator(self):
@@ -17,12 +18,23 @@ class Variable:
     @creator.setter
     def creator(self, func):
         self._creator = func
+        self.generation = func.generation + 1
 
     def backward(self):
         if self.grad is None:
             self.grad = np.ones_like(self.data)
 
-        functions = [self._creator]
+        functions = []
+        seen = set()
+
+        def add_func(f):
+            if f not in seen:
+                functions.append(f)
+                seen.add(f)
+                functions.sort(key=lambda x: x.generation)
+
+        add_func(self._creator)
+
         while functions:
             f = functions.pop()
             gys = [output.grad for output in f.outputs]
@@ -36,8 +48,8 @@ class Variable:
                 else:
                     x.grad = x.grad + gx
 
-            if x._creator is not None:
-                functions.append(x._creator)
+                if x.creator is not None:
+                    add_func(x.creator)
 
     def clean_grad(self):
         self.grad = None

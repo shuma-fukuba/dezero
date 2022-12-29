@@ -6,6 +6,7 @@ class Function:
     def __init__(self) -> None:
         self.inputs = None
         self.outputs = None
+        self.generation = None
 
     def __call__(self, *inputs: Variable):
         xs = [x.data for x in inputs]
@@ -14,6 +15,7 @@ class Function:
             ys = (ys, )
         outputs = [Variable(as_array(y)) for y in ys]
 
+        self.generation = max([x.generation for x in inputs])
         for output in outputs:
             output.creator = self
         self.inputs = inputs
