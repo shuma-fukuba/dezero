@@ -1,6 +1,6 @@
 import weakref
 from variable import Variable
-from utils.as_array import as_array
+from utils import as_array
 from config import Config
 
 

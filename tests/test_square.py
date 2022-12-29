@@ -3,7 +3,7 @@ import numpy as np
 
 from variable import Variable
 from functions import square
-from utils.numeric_diff import numeric_diff
+from utils import numeric_diff
 
 
 def test_forward():
