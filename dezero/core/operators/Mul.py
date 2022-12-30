@@ -1,4 +1,4 @@
-from functions.function import Function
+from dezero.core import Function
 
 
 class Mul(Function):
