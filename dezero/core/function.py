@@ -1,7 +1,7 @@
 import weakref
-from variable import Variable
-from utils import as_array
-from config import Config
+from dezero.core import Variable
+from dezero.core.utils import as_array, as_variable
+from dezero.core.config import Config
 
 
 class Function:
@@ -11,6 +11,7 @@ class Function:
         self.generation = None
 
     def __call__(self, *inputs: Variable):
+        inputs = [as_variable(x) for x in inputs]
         xs = [x.data for x in inputs]
         ys = self.forward(*xs)
         if not isinstance(ys, tuple):

@@ -1,4 +1,4 @@
-from .function import Function
+from dezero.core import Function
 
 
 class Square(Function):

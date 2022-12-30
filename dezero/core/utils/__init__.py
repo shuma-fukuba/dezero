@@ -1,13 +1,19 @@
 import contextlib
 import numpy as np
-from variable import Variable
-from config import Config
+from dezero.core import Variable
+from dezero.core.config import Config
 
 
 def as_array(x):
     if np.isscalar(x):
         return np.array(x)
     return x
+
+
+def as_variable(obj: any):
+    if isinstance(obj, Variable):
+        return obj
+    return Variable(obj)
 
 
 def numeric_diff(f, x: Variable, eps=1e-4):
@@ -30,4 +36,3 @@ def using_config(name, value):
 
 def no_grad():
     return using_config('enable_backprop', False)
-
