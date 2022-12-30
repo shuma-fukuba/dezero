@@ -1,6 +1,6 @@
 import weakref
-from variable import Variable
-from utils import as_array
+from core.variable import Variable
+from utils import as_array, as_variable
 from config import Config
 
 
@@ -11,6 +11,7 @@ class Function:
         self.generation = None
 
     def __call__(self, *inputs: Variable):
+        inputs = [as_variable(x) for x in inputs]
         xs = [x.data for x in inputs]
         ys = self.forward(*xs)
         if not isinstance(ys, tuple):

@@ -1,7 +1,7 @@
 import pytest
 import numpy as np
 
-from variable import Variable
+from core.variable import Variable
 from functions import square
 from utils import numeric_diff
 

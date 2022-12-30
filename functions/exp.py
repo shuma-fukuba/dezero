@@ -1,6 +1,5 @@
 import numpy as np
-
-from .function import Function
+from core import Function
 
 
 class Exp(Function):
