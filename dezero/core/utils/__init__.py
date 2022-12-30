@@ -1,7 +1,7 @@
 import contextlib
 import numpy as np
-from core.variable import Variable
-from config import Config
+from dezero.core import Variable
+from dezero.core.config import Config
 
 
 def as_array(x):

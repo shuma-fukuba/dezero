@@ -1,9 +1,9 @@
 import pytest
 import numpy as np
 
-from core.variable import Variable
-from functions import square
-from utils import numeric_diff
+from dezero.core.variable import Variable
+from dezero.functions import square
+from dezero.core.utils import numeric_diff
 
 
 def test_forward():

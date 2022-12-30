@@ -1,4 +1,4 @@
-from core import Function
+from dezero.core import Function
 
 
 class Sub(Function):

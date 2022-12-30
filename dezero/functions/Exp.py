@@ -1,5 +1,5 @@
 import numpy as np
-from core import Function
+from dezero.core import Function
 
 
 class Exp(Function):

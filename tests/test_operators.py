@@ -1,11 +1,5 @@
-import pytest
 import numpy as np
-from core import setup_operators, Variable
-
-
-@pytest.fixture(autouse=True)
-def setup_variable_ops():
-    setup_operators()
+from dezero.core import Variable
 
 
 def test_add():

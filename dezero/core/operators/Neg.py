@@ -1,4 +1,4 @@
-from core.function import Function
+from dezero.core import Function
 
 
 class Neg(Function):

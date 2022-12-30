@@ -1,10 +1,10 @@
+from dezero.core.utils import as_array
 from .Mul import Mul
 from .Add import Add
 from .Neg import Neg
 from .Sub import Sub
 from .Div import Div
 from .Pow import Pow
-from utils import as_array
 
 
 def mul(x0, x1):
