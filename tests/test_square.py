@@ -1,4 +1,3 @@
-import pytest
 import numpy as np
 
 from dezero.core.variable import Variable
@@ -27,4 +26,4 @@ def test_gradient_check():
     y.backward()
     num_grad = numeric_diff(square, x)
     flag = np.allclose(x.grad, num_grad)
-    assert flag == True
+    assert flag
